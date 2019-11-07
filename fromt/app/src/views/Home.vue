@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <sales-list :sales="sales"></sales-list>
+    <sales-list :sales="sales" :withAddMore="true"></sales-list>
   </div>
 </template>
 

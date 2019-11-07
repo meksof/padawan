@@ -1,8 +1,8 @@
+/****************
+Colors
+****************/
 $primary: #be0a26;
 @import '~bootstrap/scss/bootstrap.scss';
-/****************
- Colors
- ****************/
 
 /**********************
  * Layout
@@ -25,13 +25,25 @@ a {
 /****************
  Cards
  ****************/
+.card {
+    &:hover {
+        text-decoration: none;
+    }
+}
+
 .card-title {
     font-size: 16px;
     text-align: center;
 }
 
-.btn-primary {
-    background-color: $primary;
+.card-text {
+    font-size: 12px;
+    min-height: 54px;
+}
+
+.card-info {
+    text-align: center;
+    color: #c7c7c7
 }
 
 .add-more {
@@ -42,17 +54,37 @@ a {
     }
 }
 
-.card {
-    p {
-        font-size: 12px;
-    }
-}
 /****************
  Nav
  ****************/
 #nav a.router-link-exact-active {
     color: darken($primary, 10%);
+
     &:hover {
         color: $primary;
     }
+}
+
+h3 {
+    font-size: 18px;
+    position: relative;
+
+    &:before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 50%;
+        width: 70%;
+        right: 0;
+        height: 2px;
+        background-color: #eee;
+    }
+}
+
+/****************
+ Buttons
+ ****************/
+
+.btn-primary {
+    background-color: $primary;
 }

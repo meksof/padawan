@@ -1,6 +1,6 @@
 <template>
-  <div class="new-sale">
-    <h2>Aouter une nouvelle vente #{{ $route.params.id }}</h2>
+  <div class="new-item">
+    <h2>Aouter un nouveau Lot #{{ $route.params.id }}</h2>
     <form class="mt-3" v-on:submit.prevent="onSubmit">
       <div class="form-group">
         <label for="description">Description</label>
@@ -26,7 +26,7 @@ export default {
       let itemEndPoint = '/items'
       axios.post(`${process.env.VUE_APP_API_BASE_URL}${itemEndPoint}`, {
         description: this.desc,
-        sale_id: this.$route.params.id
+        saleId: parseInt(this.$route.params.id)
       }).then(response => {
         if (response.status === 201) {
           this.$router.push({ name: 'items', id: this.$route.params.id }, () => {
