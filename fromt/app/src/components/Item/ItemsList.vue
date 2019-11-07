@@ -29,7 +29,8 @@ export default {
   },
   mounted () {
     let itemsEndPoint = `/items?saleId=${this.$route.params.id}`
-    axios.get(`${process.env.VUE_APP_API_BASE_URL}${itemsEndPoint}`).then(response => {
+    let baseUrl = process.env.VUE_APP_API_BASE_URL || 'http://localhost:3000'
+    axios.get(`${baseUrl}${itemsEndPoint}`).then(response => {
       this.items = response.data
     })
   }

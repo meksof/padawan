@@ -18,8 +18,9 @@ export default {
     }
   },
   mounted () {
+    let baseUrl = process.env.VUE_APP_API_BASE_URL || 'http://localhost:3000'      
     let salesEndPoint = '/sales'
-    axios.get(`${process.env.VUE_APP_API_BASE_URL}${salesEndPoint}`).then(response => {
+    axios.get(`${baseUrl}${salesEndPoint}`).then(response => {
       this.sales = response.data
     })
   }
