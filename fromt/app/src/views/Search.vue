@@ -65,7 +65,7 @@ export default {
     }
   },
   mounted () {
-    let baseUrl = process.env.VUE_APP_API_BASE_URL || 'http://localhost:3000'      
+    let baseUrl = process.env.VUE_APP_API_BASE_URL || 'http://localhost:3000'
     let searchEndPoint = '/db' // Look into All ressources
     axios.get(`${baseUrl}${searchEndPoint}`).then(response => {
       this.db = response.data
