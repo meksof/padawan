@@ -28,7 +28,8 @@ export default {
   methods: {
     onSubmit () {
       let salesEndPoint = '/sales'
-      axios.post(`${process.env.VUE_APP_API_BASE_URL}${salesEndPoint}`, {
+      let baseUrl = process.env.VUE_APP_API_BASE_URL || 'http://localhost:3000'      
+      axios.post(`${baseUrl}${salesEndPoint}`, {
         title: this.title,
         description: this.desc
       }).then(response => {

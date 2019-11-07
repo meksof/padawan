@@ -8,10 +8,12 @@
         </div>
       </div>
     </div>
+    <!-- Sales List -->
     <div v-if="filteredSales.length != 0">
       <h3 class="mb-3">Les ventes</h3>
       <sales-list :sales="filteredSales"></sales-list>
     </div>
+    <!-- Items List -->
     <div v-if="filteredItems.length != 0">
       <h3 class="mb-3">Les Lots</h3>
       <div class="items row">
@@ -24,6 +26,7 @@
         </div>
       </div>
     </div>
+    <!-- No results -->
     <div class="bg-warning p-4 text-center" v-if="performedFilter == true && searchKeyword != '' && filteredItems.length == 0 && filteredSales.length == 0">
       <p style="color: white; font-size: 42px;">Pas de résultat</p>
     </div>
@@ -49,25 +52,24 @@ export default {
   },
   methods: {
     search () {
+      // Filter Sales
       this.filteredSales = this.db.sales.filter(v => {
         return v.title.toLowerCase().indexOf(this.searchKeyword.toLowerCase()) !== -1 || v.description.toLowerCase().indexOf(this.searchKeyword.toLowerCase()) !== -1
       })
+      // Filter Items
       this.filteredItems = this.db.items.filter(v => {
         return v.description.toLowerCase().indexOf(this.searchKeyword.toLowerCase()) !== -1
       })
+      // Persist search Action
       this.performedFilter = true
     }
   },
   mounted () {
+    let baseUrl = process.env.VUE_APP_API_BASE_URL || 'http://localhost:3000'      
     let searchEndPoint = '/db' // Look into All ressources
-    axios.get(`${process.env.VUE_APP_API_BASE_URL}${searchEndPoint}`).then(response => {
+    axios.get(`${baseUrl}${searchEndPoint}`).then(response => {
       this.db = response.data
     })
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-
-</style>

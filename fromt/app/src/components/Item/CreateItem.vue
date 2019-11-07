@@ -24,7 +24,8 @@ export default {
   methods: {
     onSubmit () {
       let itemEndPoint = '/items'
-      axios.post(`${process.env.VUE_APP_API_BASE_URL}${itemEndPoint}`, {
+      let baseUrl = process.env.VUE_APP_API_BASE_URL || 'http://localhost:3000'
+      axios.post(`${baseUrl}${itemEndPoint}`, {
         description: this.desc,
         saleId: parseInt(this.$route.params.id)
       }).then(response => {
