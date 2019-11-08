@@ -1,6 +1,6 @@
 # padawan-trial
 Padawan test.
-By meksof@gmail.com
+By [meksof](https://dev-front.herokuapp.com) 
 
 ## JSON Server
 
